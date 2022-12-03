@@ -1,0 +1,105 @@
+@use 'variables' as *;
+@use 'atoms';
+
+// use the mixins from the atoms module to compose our molecules. If you prefer the terminology 'blocks' and 'elements' feel free to use it instead!
+
+//The base styling we made on our atoms (elements) does most of the work...here we would make any modifications on the elements if they need to appear differently in a certain molecule (block)
+
+// To use an mixin from the atoms.scss file use the format:  @include atoms.mixinname;
+
+h3{
+  @include atoms.header-text;
+}
+.intro a{
+  color: $color-blue;
+  font-weight: bolder;
+}
+
+li a{
+  font-family: $font-text;
+} 
+.summary {
+  padding: 50px 20px 0 20px;
+  p{
+    font-family: $font-text;
+    font-size: 1.5em;
+    color: $color-white;
+    font-weight: bolder;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  
+  .sidebar {
+	margin-left: 600px; 
+	top: 0; 
+	right: 0;
+	}
+  .preamble, .supporting div, .requirements h3, .requirements p {
+    float: left;
+    clear: left;
+    width: 76%;
+    padding: 0.5em 5% 0.5em 10%;
+    position: relative;
+    p{
+      @include atoms.body-text;
+    }
+  }
+  .explanation h3, .explanation p,
+  .participation h3, .participation p,
+  .benefits h3, .benefits p {
+    width: 100%;
+  }
+  nav, .supporting {
+    display: inline;
+  }
+
+  .zen-resources h3 {
+    display: none;
+  }
+  .zen-resources ul {
+    margin: 0 29.4% 0 14.7%;
+  }
+  .zen-resources li {
+    padding: 1.5em 0 1.25em 0;
+    margin: 0;
+  }
+  .summary {
+    padding-top: 3.25em;
+  }
+  .requirements h3, .requirements p {
+    margin: 0;
+    padding-bottom: 0;
+  }
+  .design-selection li, .zen-resources li{
+    margin: 0;
+    display: block;
+    padding: 0.5em 10%;
+    color: $color-greenLit;
+    text-decoration: none;
+  }
+  .sidebar div.design-selection{
+    background: transparent url(images/jan-kopriva.jpg) center/cover;
+    color: $color-white;
+    top: 480px;
+    height: 25.86%;
+    @include atoms.side-style;
+  }
+  
+  .sidebar div.zen-resources{
+    background: transparent url(images/sidebararchive.jpg) center/cover;
+    height: 28%;
+    top: 2257.5px;
+    @include atoms.side-style;
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+    font-style: bold;
+    font-weight:600;
+    }
+
+}
